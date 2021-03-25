@@ -1,3 +1,5 @@
+package io.goharbor.harbor
+
 class Executor {
     String name
 
