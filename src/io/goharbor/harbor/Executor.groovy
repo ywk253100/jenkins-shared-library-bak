@@ -1,4 +1,3 @@
-/*
 package io.goharbor.harbor
 
 class Executor {
@@ -8,4 +7,3 @@ class Executor {
         this.name = name
     }
 }
-*/
