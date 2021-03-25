@@ -1,4 +1,4 @@
-import io.goharbor.harbor.Executor
+//import io.goharbor.harbor.Executor
 
 def call(int buildNumber) {
   if (buildNumber % 2 == 0) {
@@ -8,7 +8,6 @@ def call(int buildNumber) {
         stage('Even Stage') {
           steps {
             echo "The build number is even"
-            echo executor.Name
           }
         }
       }
@@ -20,7 +19,6 @@ def call(int buildNumber) {
         stage('Odd Stage') {
           steps {
             echo "The build number is odd"
-            echo executor.Name
           }
         }
       }
