@@ -1,6 +1,6 @@
 import io.goharbor.harbor.Executor
 def call(Executor executor) {
-  if (buildNumber % 2 == 0) {
+  if (2 % 2 == 0) {
     pipeline {
       agent any
       stages {
