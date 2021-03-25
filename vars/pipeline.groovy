@@ -1,5 +1,4 @@
 //import io.goharbor.harbor.Executor
-
 def call(int buildNumber) {
   if (buildNumber % 2 == 0) {
     pipeline {
