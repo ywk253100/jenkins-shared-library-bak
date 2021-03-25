@@ -1,4 +1,6 @@
-def call(int buildNumber) {
+import io.goharbor.harbor.Executor
+
+def call(Executor executor) {
   if (buildNumber % 2 == 0) {
     pipeline {
       agent any
@@ -6,6 +8,7 @@ def call(int buildNumber) {
         stage('Even Stage') {
           steps {
             echo "The build number is even"
+            echo executor.Name
           }
         }
       }
@@ -17,6 +20,7 @@ def call(int buildNumber) {
         stage('Odd Stage') {
           steps {
             echo "The build number is odd"
+            echo executor.Name
           }
         }
       }
