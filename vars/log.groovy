@@ -2,7 +2,9 @@ import io.goharbor.harbor.FreshInstallPipelineExecutor
 
 def call(FreshInstallPipelineExecutor executor) {
   pipeline {
-    agent any
+    agent {
+      label 'helm-client'
+    }
     stages {
       stage("Pre-Install") {
         steps {
