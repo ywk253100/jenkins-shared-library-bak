@@ -6,17 +6,23 @@ def call(FreshInstallPipelineExecutor executor) {
     stages {
       stage("Pre-Install") {
         steps {
-          executor.preInstall()
+          script {
+            executor.preInstall()
+          }
         }
       }
       stage("Install") {
         steps {
-          executor.install()
+          script {
+            executor.install()
+          }
         }
       }
       stage("Post-Install") {
         steps {
-          executor.postInstall()
+          script {
+            executor.postInstall()
+          }
         }
       }
       stage("Health Check") {
@@ -26,7 +32,9 @@ def call(FreshInstallPipelineExecutor executor) {
       }
       stage("Pre-Test") {
         steps {
-          executor.preTest()
+          script {
+            executor.preTest()
+          }
         }
       }
       stage("Test") {
@@ -36,7 +44,9 @@ def call(FreshInstallPipelineExecutor executor) {
       }
       stage("Post-Test") {
         steps {
-          executor.postTest()
+          script {
+            executor.postTest()
+          }
         }
       }
     }
