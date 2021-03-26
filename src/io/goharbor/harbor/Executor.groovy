@@ -1,9 +1,9 @@
 package io.goharbor.harbor
 
-class Executor {
-    String name
-
-    Executor(name) {
-        this.name = name
-    }
+interface FreshInstallPipelineExecutor {
+    void preInstall()
+    void install()
+    void postInstall()
+    void preTest()
+    void postTest()
 }
