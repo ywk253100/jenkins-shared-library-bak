@@ -1,6 +1,6 @@
 package io.goharbor.harbor
 
-interface FreshInstallPipelineExecutor {
+public interface FreshInstallPipelineExecutor {
     void preInstall()
     void install()
     void postInstall()
