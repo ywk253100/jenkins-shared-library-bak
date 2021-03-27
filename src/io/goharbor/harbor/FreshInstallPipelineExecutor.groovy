@@ -2,7 +2,7 @@ package io.goharbor.harbor
 
 public interface FreshInstallPipelineExecutor {
     void preInstall()
-    void install()
+    String install()
     void postInstall()
     void preTest()
     void postTest()

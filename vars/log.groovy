@@ -59,8 +59,15 @@ def call(FreshInstallPipelineExecutor executor) {
 
 def call(FreshInstallPipelineExecutor executor) {
     node("helm-client") {
-        stage('Example') {
+        def hostname = ""
+        stage('Pre-Install') {
             executor.preInstall()
+        }
+        stage('Install') {
+            hostname = executor.install()
+        }
+        stage('Example') {
+            echo $hostname
         }
     }
 }
