@@ -8,11 +8,6 @@ def call(FreshInstallPipelineExecutor executor) {
     stages {
       stage("Pre-Install") {
         steps {
-          echo "============================"
-          sh "docker images"
-          sh "docker info"
-          echo "============================"
-
           script {
             executor.preInstall()
           }
