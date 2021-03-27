@@ -67,7 +67,7 @@ def call(FreshInstallPipelineExecutor executor) {
             hostname = executor.install()
         }
         stage('Example') {
-            echo $hostname
+            echo hostname
         }
     }
 }
