@@ -1,4 +1,5 @@
 import io.goharbor.harbor.FreshInstallPipelineExecutor
+import io.goharbor.harbor.HarborInstance
 
 /*
 def call(FreshInstallPipelineExecutor executor) {
@@ -59,15 +60,28 @@ def call(FreshInstallPipelineExecutor executor) {
 
 def call(FreshInstallPipelineExecutor executor) {
     node("helm-client") {
-        def hostname = ""
+        HarborInstance instance
         stage('Pre-Install') {
             executor.preInstall()
         }
         stage('Install') {
-            hostname = executor.install()
+            instance = executor.install()
+            echo instance.getCoreServiceURL
         }
-        stage('Example') {
-            echo hostname
+        stage('Post-Install') {
+            executor.postInstall()
+        }
+        stage('Health Check') {
+            echo "health checking"
+        }
+        stage('Pre-Test') {
+             executor.preTest()
+        }
+        stage('Test') {
+             echo "testing"
+        }
+        stage('Post-Test') {
+             executor.postTest()
         }
     }
 }
