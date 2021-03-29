@@ -18,7 +18,6 @@ class TestCaseRunner implements Serializable {
             gstring
             $coreServiceURL
             $coreServiceURL2
-            $coreServiceURL3
         """
         script.echo("#######")
         script.echo(str)
