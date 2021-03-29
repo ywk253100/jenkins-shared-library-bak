@@ -80,7 +80,6 @@ def call(FreshInstallPipelineExecutor executor) {
             executor.preTest()
         }
         stage('Test') {
-            echo "testing"
             TestCaseRunner runner = new TestCaseRunner(this, instance)
             runner.run()
         }
