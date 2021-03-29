@@ -11,23 +11,12 @@ class TestCaseRunner implements Serializable {
 
     void run(){
         String coreServiceURL = instance.getCoreServiceURL()
-        def coreServiceURL2 = instance.getCoreServiceURL()
-        //GString coreServiceURL3 = instance.getCoreServiceURL()
-        script.echo(coreServiceURL)
-        def str = '''
-            gstring
-            $coreServiceURL
-            $coreServiceURL2
-        '''
-        script.echo("#######")
-        script.echo(str)
-        def cmd = """
+        script.sh """
             docker run -i --rm -v /harbor/workspace/harbor_nightly_executor_1/test-case:/drone \
                 -w /drone \
                 harbor-repo.vmware.com/harbor-ci/goharbor/harbor-e2e-engine:2.6.3 \
                 /bin/bash /drone/nightly_test.sh --endpoint $coreServiceURL
         """
-        script.sh(cmd)
         /*
         #docker run -i -v /harbor/workspace/harbor_nightly_executor_1/framework/cert/:/ecs_ca \
                     #    -v /harbor/workspace/harbor_nightly_executor_1/framework/execution/resolv_bak.conf:/etc/resolv.conf \
