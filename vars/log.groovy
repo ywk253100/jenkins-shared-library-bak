@@ -82,7 +82,7 @@ def call(FreshInstallPipelineExecutor executor) {
         stage('Test') {
             echo "testing"
             TestCaseRunner runner = new TestCaseRunner(this, instance)
-            runner.Run()
+            runner.run()
         }
         stage('Post-Test') {
              executor.postTest()
