@@ -1,7 +1,7 @@
 import io.goharbor.harbor.FreshInstallPipelineExecutor
 import io.goharbor.harbor.HarborInstance
 
-
+/*
 def call(FreshInstallPipelineExecutor executor) {
   pipeline {
     agent {
@@ -56,11 +56,11 @@ def call(FreshInstallPipelineExecutor executor) {
     }
   }
 }
+*/
 
-
-/*
 def call(FreshInstallPipelineExecutor executor) {
     node("helm-client") {
+        checkout scm
         HarborInstance instance
         stage('Pre-Install') {
             executor.preInstall()
@@ -86,4 +86,3 @@ def call(FreshInstallPipelineExecutor executor) {
         }
     }
 }
-*/
