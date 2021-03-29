@@ -12,7 +12,7 @@ class TestCaseRunner implements Serializable {
     void run(){
         String coreServiceURL = instance.getCoreServiceURL()
         def coreServiceURL2 = instance.getCoreServiceURL()
-        #GString coreServiceURL3 = instance.getCoreServiceURL()
+        //GString coreServiceURL3 = instance.getCoreServiceURL()
         script.echo(coreServiceURL)
         def str = """
             gstring
