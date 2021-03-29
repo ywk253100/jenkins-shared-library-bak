@@ -1,5 +1,6 @@
 import io.goharbor.harbor.FreshInstallPipelineExecutor
 import io.goharbor.harbor.HarborInstance
+import io.goharbor.harbor.TestCaseRunner
 
 /*
 def call(FreshInstallPipelineExecutor executor) {
@@ -76,10 +77,12 @@ def call(FreshInstallPipelineExecutor executor) {
             echo "health checking"
         }
         stage('Pre-Test') {
-             executor.preTest()
+            executor.preTest()
         }
         stage('Test') {
-             echo "testing"
+            echo "testing"
+            TestCaseRunner runner = new TestCaseRunner(this, instance)
+            runner.Run()
         }
         stage('Post-Test') {
              executor.postTest()
