@@ -15,7 +15,7 @@ class TestCaseRunner implements Serializable {
             docker run -i --rm -v /harbor/workspace/harbor_nightly_executor_1/test-case:/drone \
                 -w /drone \
                 harbor-repo.vmware.com/harbor-ci/goharbor/harbor-e2e-engine:2.6.3 \
-                /bin/bash /drone/nightly_test.sh --endpoint $coreServiceURL
+                /bin/bash robot -v ip:$coreServiceURL
         """
         /*
         #docker run -i -v /harbor/workspace/harbor_nightly_executor_1/framework/cert/:/ecs_ca \
