@@ -14,25 +14,27 @@ class TestCaseRunner implements Serializable {
         def coreServiceURL2 = instance.getCoreServiceURL()
         //GString coreServiceURL3 = instance.getCoreServiceURL()
         script.echo(coreServiceURL)
-        def str = """
+        def str = '''
             gstring
             $coreServiceURL
             $coreServiceURL2
-        """
+        '''
         script.echo("#######")
         script.echo(str)
-        script.sh '''
-            echo "=============================="
+        def cmd = '''
             docker run -i --rm -v /harbor/workspace/harbor_nightly_executor_1/test-case:/drone \
                 -w /drone \
                 harbor-repo.vmware.com/harbor-ci/goharbor/harbor-e2e-engine:2.6.3 \
                 /bin/bash /drone/nightly_test.sh --endpoint $coreServiceURL
-            #docker run -i -v /harbor/workspace/harbor_nightly_executor_1/framework/cert/:/ecs_ca \
-            #    -v /harbor/workspace/harbor_nightly_executor_1/framework/execution/resolv_bak.conf:/etc/resolv.conf \
-            #    -v /etc/hosts:/etc/hosts -v /harbor/workspace/harbor_nightly_executor_1/test-case:/drone -v /harbor/ca:/ca
-            #    -v /data/cert:/helm_ca -v /data/ca_download:/notary_ca \
-            #    -w /drone harbor-repo.vmware.com/harbor-ci/goharbor/harbor-e2e-engine:2.6.3 \
-            #    /bin/bash /drone/nightly_test.sh
         '''
+        script.sh(cmd)
+        /*
+        #docker run -i -v /harbor/workspace/harbor_nightly_executor_1/framework/cert/:/ecs_ca \
+                    #    -v /harbor/workspace/harbor_nightly_executor_1/framework/execution/resolv_bak.conf:/etc/resolv.conf \
+                    #    -v /etc/hosts:/etc/hosts -v /harbor/workspace/harbor_nightly_executor_1/test-case:/drone -v /harbor/ca:/ca
+                    #    -v /data/cert:/helm_ca -v /data/ca_download:/notary_ca \
+                    #    -w /drone harbor-repo.vmware.com/harbor-ci/goharbor/harbor-e2e-engine:2.6.3 \
+                    #    /bin/bash /drone/nightly_test.sh
+        */
     }
 }
