@@ -11,6 +11,7 @@ class TestCaseRunner implements Serializable {
 
     void run(){
         String coreServiceURL = instance.getCoreServiceURL()
+        script.echo(coreServiceURL)
         script.sh '''
             echo "=============================="
             echo $coreServiceURL
