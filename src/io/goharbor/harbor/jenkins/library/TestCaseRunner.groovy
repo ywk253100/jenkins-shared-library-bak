@@ -27,6 +27,7 @@ class TestCaseRunner implements Serializable {
                     -v LOCAL_REGISTRY:harbor-repo.vmware.com -v LOCAL_REGISTRY_NAMESPACE:harbor-ci \
                     -v DOCKER_USER:username -v DOCKER_PWD:password \
                     -v HARBOR_PASSWORD:$instance.systemAdminPassword \
+                    -v ip1: -v OIDC_HOSTNAME:nightly-oidc.harbor.io \
                     /drone/tests/robot-cases/Group1-Nightly/Setup_Nightly.robot
         """
     }
