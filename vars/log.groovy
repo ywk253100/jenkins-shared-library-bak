@@ -1,6 +1,6 @@
-import io.goharbor.harbor.FreshInstallPipelineExecutor
-import io.goharbor.harbor.HarborInstance
-import io.goharbor.harbor.TestCaseRunner
+import io.goharbor.harbor.jenkins.library.FreshInstallPipelineExecutor
+import io.goharbor.harbor.jenkins.library.HarborInstance
+import io.goharbor.harbor.jenkins.library.TestCaseRunner
 
 /*
 def call(FreshInstallPipelineExecutor executor) {

@@ -1,8 +1,11 @@
-package io.goharbor.harbor
+package io.goharbor.harbor.jenkins.library
 
 public class HarborInstance implements Serializable{
-    public String coreServiceURL; // the URL of core service
-    public String notaryServiceURL; // the URL of notary service
+    public String coreServiceURL;
+    public String notaryServiceURL;
+    public boolean trivyEnabled;
+    public boolean notaryEnabled;
+    public boolean chartmuseumEnabled;
     public Map ipHostnameMappings; // the mapping of IP address and hostname
 
     public void setCoreServiceURL(String url){
