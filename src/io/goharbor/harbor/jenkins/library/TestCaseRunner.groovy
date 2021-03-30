@@ -11,14 +11,16 @@ class TestCaseRunner implements Serializable {
     }
 
     void run(){
+        // checkout the test case into the "harbor" folder
         script.checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'https://github.com/goharbor/harbor.git']], branches: [[name: 'master']],
             extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'harbor']]]
+
         String coreServiceURL = instance.getCoreServiceURL()
         script.sh """
-            docker run -i --privileged --rm -v /harbor/workspace/harbor_nightly_executor_1/test-case:/drone \
+            docker run -i --privileged --rm -v $(pwd)/harbor:/drone \
                 -w /drone \
                 harbor-repo.vmware.com/harbor-ci/goharbor/harbor-e2e-engine:2.6.3 \
-                /bin/bash robot -v ip:$coreServiceURL
+                ls;robot -v ip:$coreServiceURL
         """
         /*
         #docker run -i -v /harbor/workspace/harbor_nightly_executor_1/framework/cert/:/ecs_ca \
