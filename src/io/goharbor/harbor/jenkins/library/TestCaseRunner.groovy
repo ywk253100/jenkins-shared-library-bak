@@ -15,20 +15,12 @@ class TestCaseRunner implements Serializable {
         script.checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'https://github.com/goharbor/harbor.git']], branches: [[name: 'master']],
             extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'harbor']]]
 
-        String coreServiceURL = instance.getCoreServiceURL()
+        String coreServiceURL = instance.coreServiceURL()
         script.sh """
-            docker run -i --privileged --rm -v \$(pwd)/harbor:/drone \
-                -w /drone \
+            docker run -i --privileged --rm -v \$(pwd)/harbor:/drone -w /drone \
                 harbor-repo.vmware.com/harbor-ci/goharbor/harbor-e2e-engine:2.6.3 \
-                ls;robot -v ip:$coreServiceURL
+                robot -v ip:$coreServiceURL \
+                    /drone/tests/robot-cases/Group1-Nightly/Setup_Nightly.robot
         """
-        /*
-        #docker run -i -v /harbor/workspace/harbor_nightly_executor_1/framework/cert/:/ecs_ca \
-                    #    -v /harbor/workspace/harbor_nightly_executor_1/framework/execution/resolv_bak.conf:/etc/resolv.conf \
-                    #    -v /etc/hosts:/etc/hosts -v /harbor/workspace/harbor_nightly_executor_1/test-case:/drone -v /harbor/ca:/ca
-                    #    -v /data/cert:/helm_ca -v /data/ca_download:/notary_ca \
-                    #    -w /drone harbor-repo.vmware.com/harbor-ci/goharbor/harbor-e2e-engine:2.6.3 \
-                    #    /bin/bash /drone/nightly_test.sh
-        */
     }
 }
