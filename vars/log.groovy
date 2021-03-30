@@ -68,7 +68,6 @@ def call(FreshInstallPipelineExecutor executor) {
         }
         stage('Install') {
             instance = executor.install()
-            echo instance.coreServiceURL()
         }
         stage('Post-Install') {
             executor.postInstall()
