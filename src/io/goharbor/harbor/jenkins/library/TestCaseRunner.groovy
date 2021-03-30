@@ -17,7 +17,7 @@ class TestCaseRunner implements Serializable {
 
         String coreServiceURL = instance.getCoreServiceURL()
         script.sh """
-            docker run -i --privileged --rm -v $(pwd)/harbor:/drone \
+            docker run -i --privileged --rm -v \$(pwd)/harbor:/drone \
                 -w /drone \
                 harbor-repo.vmware.com/harbor-ci/goharbor/harbor-e2e-engine:2.6.3 \
                 ls;robot -v ip:$coreServiceURL
