@@ -11,7 +11,8 @@ class TestCaseRunner implements Serializable {
     }
 
     void run(){
-        script.checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'https://github.com/goharbor/harbor.git']], branches: [[name: 'master']]]
+        script.checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'https://github.com/goharbor/harbor.git']], branches: [[name: 'master']],
+            extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'harbor']]]
         String coreServiceURL = instance.getCoreServiceURL()
         script.sh """
             docker run -i --privileged --rm -v /harbor/workspace/harbor_nightly_executor_1/test-case:/drone \
