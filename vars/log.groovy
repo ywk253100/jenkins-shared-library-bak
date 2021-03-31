@@ -1,6 +1,7 @@
 import io.goharbor.harbor.jenkins.library.FreshInstallPipelineExecutor
 import io.goharbor.harbor.jenkins.library.HarborInstance
 import io.goharbor.harbor.jenkins.library.TestCaseRunner
+import io.goharbor.harbor.jenkins.library.TestResultPublisher
 
 /*
 def call(FreshInstallPipelineExecutor executor) {
@@ -80,10 +81,12 @@ def call(FreshInstallPipelineExecutor executor) {
         }
         stage('Test') {
             TestCaseRunner runner = new TestCaseRunner(this, instance)
-            runner.run()
+            String path = runner.run()
         }
         stage('Post-Test') {
-             executor.postTest()
+            executor.postTest()
+            TestResultPublisher publisher = new TestResultPublisher(this, path)
+            publisher.publish()
         }
     }
 }

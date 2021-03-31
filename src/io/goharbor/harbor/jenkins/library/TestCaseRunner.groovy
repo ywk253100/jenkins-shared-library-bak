@@ -10,7 +10,8 @@ class TestCaseRunner implements Serializable {
       this.instance = instance
     }
 
-    void run(){
+    // run the test cases and return the path of the test result
+    String run(){
         // checkout the test case into the "harbor" folder
         script.checkout scm: [$class: "GitSCM", userRemoteConfigs: [[url: "https://github.com/goharbor/harbor.git"]], branches: [[name: "$testCaseRef"]],
             extensions: [[$class: "RelativeTargetDirectory", relativeTargetDir: "harbor"]]]
@@ -41,5 +42,6 @@ class TestCaseRunner implements Serializable {
             unstableThreshold: 95.0,
             otherFiles : "**/*.png" ])
         script.echo("==========")
+        return "harbor"
     }
 }
