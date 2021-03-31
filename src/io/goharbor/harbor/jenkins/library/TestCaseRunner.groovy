@@ -21,14 +21,14 @@ class TestCaseRunner implements Serializable {
         // TODO 4. replace the "harbor-repo.vmware.com"?
         // TODO 5. set the dockerhub credential
         script.sh """
-            docker run -i --privileged --rm -w /drone -v \$(pwd)/harbor:/drone \
+            (docker run -i --privileged --rm -w /drone -v \$(pwd)/harbor:/drone \
                 harbor-repo.vmware.com/harbor-ci/goharbor/harbor-e2e-engine:2.6.3 \
                 robot -v ip:$instance.coreServiceURL -v notaryServerEndpoint:$instance.notaryServiceURL \
                     -v LOCAL_REGISTRY:harbor-repo.vmware.com -v LOCAL_REGISTRY_NAMESPACE:harbor-ci \
                     -v DOCKER_USER:username -v DOCKER_PWD:password \
                     -v HARBOR_PASSWORD:$instance.systemAdminPassword \
                     -v ip1: -v OIDC_HOSTNAME:nightly-oidc.harbor.io \
-                    /drone/tests/robot-cases/Group1-Nightly/Setup_Nightly.robot
+                    /drone/tests/robot-cases/Group1-Nightly/Setup_Nightly.robot) || true
         """
         script.echo("==========")
         script.echo("\$(pwd)/harbor")
