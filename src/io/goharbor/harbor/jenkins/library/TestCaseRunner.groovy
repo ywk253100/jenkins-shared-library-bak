@@ -30,5 +30,7 @@ class TestCaseRunner implements Serializable {
                     -v ip1: -v OIDC_HOSTNAME:nightly-oidc.harbor.io \
                     /drone/tests/robot-cases/Group1-Nightly/Setup_Nightly.robot
         """
+
+        script.robot outputPath: "$(pwd)/harbor"
     }
 }
