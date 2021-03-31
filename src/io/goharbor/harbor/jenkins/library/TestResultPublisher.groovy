@@ -9,6 +9,8 @@ class TestResultPublisher implements Serializable {
       this.path = path
     }
 
+    // TODO: 1. store the result
+    // TODO: 2. publish to slack channel
     // publish the test result
     void publish(){
         script.step([$class : "RobotPublisher",
