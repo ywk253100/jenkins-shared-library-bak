@@ -81,14 +81,14 @@ def call(FreshInstallPipelineExecutor executor) {
         }
         stage('Test') {
             TestCaseRunner runner = new TestCaseRunner(this, instance)
-            String path = runner.run()
+            String resultPath = runner.run()
         }
         stage('Post-Test') {
             executor.postTest()
             echo "=========="
-            echo path
+            echo resultPath
             echo "=========="
-            TestResultPublisher publisher = new TestResultPublisher(this, path)
+            TestResultPublisher publisher = new TestResultPublisher(this, resultPath)
             publisher.publish()
         }
     }
