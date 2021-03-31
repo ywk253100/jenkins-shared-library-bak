@@ -23,6 +23,9 @@ class TestResultPublisher implements Serializable {
             unstableThreshold: 100.00,
             otherFiles : "**/*.png" ])
 
-        script.slackSend channel: "#yinw-channel" ,token: "B9F9Uqbn8XfxkH6HNeyT4Qzp", teamDomain: "vmware"
+        script.slackSend(channel: "#yinw-channel",
+            token: "B9F9Uqbn8XfxkH6HNeyT4Qzp",
+            teamDomain: "vmware",
+            message: "${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
     }
 }
