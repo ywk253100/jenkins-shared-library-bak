@@ -31,6 +31,6 @@ class TestCaseRunner implements Serializable {
                     /drone/tests/robot-cases/Group1-Nightly/Setup_Nightly.robot
         """
 
-        script.robot outputPath: "$(pwd)/harbor"
+        script.robot outputPath: "\$(pwd)/harbor"
     }
 }
