@@ -26,6 +26,6 @@ class TestResultPublisher implements Serializable {
         script.slackSend(channel: "#yinw-channel",
             token: "B9F9Uqbn8XfxkH6HNeyT4Qzp",
             teamDomain: "vmware",
-            message: "${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+            message: "\${env.JOB_NAME} \${env.BUILD_NUMBER} (<\${env.BUILD_URL}|Open>)")
     }
 }
