@@ -31,7 +31,15 @@ class TestCaseRunner implements Serializable {
                     /drone/tests/robot-cases/Group1-Nightly/Setup_Nightly.robot) || true
         """
         script.echo("==========")
-        script.step([$class : "RobotPublisher", outputPath : ".harbor"])
+        script.step([$class : "RobotPublisher",
+            outputPath : ".harbor",
+            outputFileName : "output.xml",
+            reportFileName : 'report.html',
+            logFileName : 'log.html',
+            disableArchiveOutput : false,
+            passThreshold : 95.0,
+            unstableThreshold: 95.0,
+            otherFiles : "**/*.png" ])
         script.echo("==========")
     }
 }
