@@ -22,5 +22,7 @@ class TestResultPublisher implements Serializable {
             passThreshold : 100.00,
             unstableThreshold: 100.00,
             otherFiles : "**/*.png" ])
+
+        script.slackSend channel: "#yinw-channel" ,token: "xxxx", teamDomain: "vmware"
     }
 }

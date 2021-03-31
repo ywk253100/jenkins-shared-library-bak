@@ -86,9 +86,6 @@ def call(FreshInstallPipelineExecutor executor) {
         }
         stage('Post-Test') {
             executor.postTest()
-            echo "=========="
-            echo resultPath
-            echo "=========="
             TestResultPublisher publisher = new TestResultPublisher(this, resultPath)
             publisher.publish()
         }
