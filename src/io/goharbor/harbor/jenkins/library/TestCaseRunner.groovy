@@ -32,7 +32,7 @@ class TestCaseRunner implements Serializable {
         """
         script.echo("==========")
         script.step([$class : "RobotPublisher",
-            outputPath : ".harbor",
+            outputPath : "harbor",
             outputFileName : "output.xml",
             reportFileName : 'report.html',
             logFileName : 'log.html',
