@@ -32,7 +32,6 @@ class TestCaseRunner implements Serializable {
         """
         script.echo("==========")
         script.step([$class : "RobotPublisher", outputPath : ".harbor"])}
-        script.robot outputPath: "./harbor"
         script.echo("==========")
     }
 }
