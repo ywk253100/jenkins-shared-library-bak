@@ -64,6 +64,7 @@ def call(FreshInstallPipelineExecutor executor) {
     node("helm-client") {
         checkout scm
         HarborInstance instance
+        String resultPath
         stage('Pre-Install') {
             executor.preInstall()
         }
@@ -81,7 +82,7 @@ def call(FreshInstallPipelineExecutor executor) {
         }
         stage('Test') {
             TestCaseRunner runner = new TestCaseRunner(this, instance)
-            String resultPath = runner.run()
+            resultPath = runner.run()
         }
         stage('Post-Test') {
             executor.postTest()
