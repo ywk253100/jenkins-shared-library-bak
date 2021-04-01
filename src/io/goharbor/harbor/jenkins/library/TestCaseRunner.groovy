@@ -21,6 +21,7 @@ class TestCaseRunner implements Serializable {
         // TODO 3. refine the image
         // TODO 4. replace the "harbor-repo.vmware.com"?
         // TODO 5. set the dockerhub credential
+        // TODO 6. populate users in the image
         script.sh """
             (docker run -i --privileged --rm -w /drone -v \$(pwd)/harbor:/drone \
                 harbor-repo.vmware.com/harbor-ci/goharbor/harbor-e2e-engine:2.6.3 \

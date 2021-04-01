@@ -9,10 +9,14 @@ class TestResultPublisher implements Serializable {
       this.path = path
     }
 
-    // TODO: 1. store the result
-    // TODO: 2. publish to slack channel
+    // TODO: persistent the result
     // publish the test result
     void publish(){
+        publishRobotTestCaseResult()
+        sendToSlack()
+    }
+
+    void publishRobotTestCaseResult(){
         script.step([$class : "RobotPublisher",
             outputPath : "$path",
             outputFileName : "output.xml",
@@ -22,7 +26,11 @@ class TestResultPublisher implements Serializable {
             passThreshold : 100.00,
             unstableThreshold: 100.00,
             otherFiles : "**/*.png" ])
+    }
 
+    // TODO: refine the message
+    // TODO: get the token from credential store
+    void sendToSlack(){
         script.slackSend(channel: "#yinw-channel",
             token: "B9F9Uqbn8XfxkH6HNeyT4Qzp",
             teamDomain: "vmware",
