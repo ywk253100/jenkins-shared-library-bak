@@ -1,4 +1,4 @@
-package io.goharbor.harbor.jenkins.library
+package io.goharbor.jenkins.library
 
 public interface FreshInstallPipelineExecutor {
     void preInstall()

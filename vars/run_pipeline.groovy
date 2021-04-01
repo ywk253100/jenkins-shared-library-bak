@@ -1,7 +1,7 @@
-import io.goharbor.harbor.jenkins.library.FreshInstallPipelineExecutor
-import io.goharbor.harbor.jenkins.library.HarborInstance
-import io.goharbor.harbor.jenkins.library.TestCaseRunner
-import io.goharbor.harbor.jenkins.library.TestResultPublisher
+import io.goharbor.jenkins.library.FreshInstallPipelineExecutor
+import io.goharbor.jenkins.library.HarborInstance
+import io.goharbor.jenkins.library.TestCaseRunner
+import io.goharbor.jenkins.library.TestResultPublisher
 
 def call(FreshInstallPipelineExecutor executor) {
     node("helm-client") {

@@ -1,4 +1,4 @@
-package io.goharbor.harbor.jenkins.library
+package io.goharbor.jenkins.library
 
 class TestCaseRunner implements Serializable {
     private Script script;
